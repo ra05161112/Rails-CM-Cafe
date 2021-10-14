@@ -15,6 +15,9 @@
     <%= f.label :creation_time, "作成時間" %><br>
     <%= f.number_field :creation_time, step: "0.1" %>
   </div>
+  <span class="picture">
+    <%= f.file_field :picture %>
+  </span><br>
   <%= f.submit "Update!" %><br>
   <%= link_to("Back", "/items/#{@item.id}") %>
 <% end %>

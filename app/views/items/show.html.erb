@@ -2,7 +2,13 @@
 <p>価格<%= "  #{@item.price}円" %></p>
 <p>作成時間<%= "  #{@item.creation_time}分" %></p>
 <p><%= @item.description %></p>
-<div class="btn">
+<div class="float-right">
+  <span class="picture">
+    <%= image_tag @item.picture.url if @item.picture? %>
+  </span>
+</div>
+
+<div class="float-right">
   <%= link_to("編集","/items/#{@item.id}/edit") %>
   <%= link_to("削除", "/items/#{@item.id}", method: :delete, data: { confirm: "本当に削除しますか？" }) %>
 </div>
