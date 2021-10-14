@@ -23,6 +23,28 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      flash[:notice] = "編集に成功しました🐇"
+      redirect_to("/items/#{@item.id}")
+    else
+      flash[:alert] = "失敗です"
+      render("items/edit")
+    end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    flash[:notice] = "メニューの削除に成功しました🐇"
+    redirect_to("/items")
+  end
+
 
   private
     def item_params
