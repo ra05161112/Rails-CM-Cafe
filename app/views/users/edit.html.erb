@@ -1,0 +1,34 @@
+
+<%= form_with model: @user, url: "/users/#{@user.id}/edit", local: true  do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.number_field :age %>
+  </div>
+
+  <div class="filed">
+    <%= f.label :sex %><br>
+    <%= f.select :sex, [["男性",0], ["女性", 1], ["選択しない"]], { include_blank: true } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :admin %>
+    <%= f.check_box :admin %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<%= link_to("Back", "/users/#{@user.id}") %>

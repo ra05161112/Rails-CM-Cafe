@@ -1,0 +1,5 @@
+  <h2>マイページ</h2>
+  <%= @user.name %><hr>
+  <%= @user.age %>
+<%= @user.sex %>
+  <%= link_to("編集","/users/#{@user.id}/edit") %>

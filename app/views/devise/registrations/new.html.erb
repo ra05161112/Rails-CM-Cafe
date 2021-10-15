@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= f.label :sex %><br>
-    <%= f.number_field :sex %>
+    <%= f.select :sex, [["男性",0], ["女性", 1], ["選択しない", 2]], { include_blank: true, selected: 2 } %>
   </div>
 
   <div class="field">

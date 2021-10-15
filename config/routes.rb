@@ -6,4 +6,7 @@ Rails.application.routes.draw do
 
   root 'items#index'
   resources :items
+  get "/users/:id", to: "users#show"
+  get "/users/:id/edit", to: "users#edit"
+  patch "users/:id/edit" , to:"users#update"
 end
