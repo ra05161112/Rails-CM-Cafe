@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :admin_user, only: [:new, :create, :destroy, :edit, :update]
 
   def index
     @item = Item.all
@@ -51,6 +52,11 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:name, :description, :price, :creation_time, :picture)
     end
 
-    
+    def admin_user
+      unless current_user.admin?
+        flash[:alert] = "そのページは開けません"
+        redirect_to ("/items")
+      end
+    end
 
 end

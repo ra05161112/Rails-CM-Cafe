@@ -21,7 +21,7 @@
     <%= f.select :sex, [["男性",0], ["女性", 1], ["選択しない"]], { include_blank: true } %>
   </div>
 
-  <div class="field">
+  <div class="field" hidden>
     <%= f.label :admin %>
     <%= f.check_box :admin %>
   </div>
