@@ -1,0 +1,8 @@
+<%= form_with modle: @vote, url: "/items/#{@item.id}/votes", local: true do |f| %>
+  <% @item.each do |item| %>
+  <%= link_to(item.name, "/items/#{item.id}") %><%= "¥#{item.price}" %><br>
+  <%= f.check_box :item_id ,value: item.id %> <br>   
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <% end %>
+  <%= f.submit "投票" %>
+<% end %>

@@ -12,3 +12,10 @@
   <%= link_to("編集","/items/#{@item.id}/edit") %>
   <%= link_to("削除", "/items/#{@item.id}", method: :delete, data: { confirm: "本当に削除しますか？" }) %>
 </div>
+<div class="vote">
+  <%= form_with(modle: [@item,@vote], url: "/items/#{@item.id}/votes", local: true) do |f| %>  
+    <%= f.label :voting %>
+    <%= f.check_box :voting  %><br>
+    <%= f.submit "投票" %>
+<% end %>
+</div>

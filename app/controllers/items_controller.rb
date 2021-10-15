@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @vote = Vote.new
   end
 
   def edit
