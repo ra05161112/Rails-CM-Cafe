@@ -7,6 +7,8 @@ class Item < ApplicationRecord
   validates :description, length: { maximum: 200 }
   validate  :picture_size
 
+  has_many :votes , dependent: :destroy
+
 
   private
     # アップロードされた画像のサイズをバリデーションする
