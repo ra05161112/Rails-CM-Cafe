@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2021_10_15_114215) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "picture"
-    t.boolean "voting", default: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_114215) do
     t.integer "item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "voting", default: false
     t.index ["item_id"], name: "index_votes_on_item_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end

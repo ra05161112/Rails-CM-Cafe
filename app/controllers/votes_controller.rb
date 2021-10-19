@@ -7,15 +7,17 @@ class VotesController < ApplicationController
 
   def create
     @vote = Vote.new(vote_params)
-    @vote.user_id = current_user.id
-    @vote.item_id = params[:item_id]
+    # @vote.user_id = current_user.id
+    # @vote.item_id = params[:item_id]
     if @vote.save
       flash[:notice] = "投票が成功しました🐇"
-      redirect_to("/items")
+      redirect_to("/items/#{params[:item_id]}")
     else
-      @item = Item.find(params[:item_id])
-      flash[:alert] = "sippai"
-      render "items/show"
+      # @item = Item.find(params[:item_id])
+      @item = Item.all
+      flash[:alert] = @vote.errors.full_messages
+      # render "items/show"
+      render "votes/new"
     end
   end
 
