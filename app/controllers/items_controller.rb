@@ -13,17 +13,18 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       flash[:notice] = "ok"
-      redirect_to("/items/new")
+      redirect_to("/items")
     else
       @item = Item.all
       flash[:alert] = "no"
-      render("items/index")
+      render("items/new")
     end
   end
 
   def show
     @item = Item.find(params[:id])
     @vote = Vote.new
+
   end
 
   def edit

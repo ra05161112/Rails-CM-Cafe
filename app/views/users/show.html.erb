@@ -4,7 +4,11 @@
 <%= @user.sex %>
   <%= link_to("編集","/users/#{@user.id}/edit") %>
 <div class="favorite">
+  <div class="container">
+    <p>お気に入り商品</p>
     <% @vote.each do |vote| %>
       <%= link_to(Item.find(vote.item_id).name, "/items/#{Item.find(vote.item_id).id}") %><br>
     <% end %>
+  </div>
+
 </div>

@@ -10,6 +10,9 @@ class VotesController < ApplicationController
     # @vote.user_id = current_user.id
     # @vote.item_id = params[:item_id]
     if @vote.save
+      @item = Item.find(@vote.item_id) 
+      @item.voted_count += 1
+      @item.save
       flash[:notice] = "投票が成功しました🐇"
       redirect_to("/votes/new")
     else
@@ -30,6 +33,9 @@ class VotesController < ApplicationController
     @vote = Vote.find(params[:id])
     if @vote.user_id == current_user.id
       @vote.destroy
+      @item = Item.find(@vote.item_id)
+      @item.voted_count -= 1
+      @item.save
       flash[:notice] = "メニューの削除に成功しました🐇"
       redirect_to("/votes/new")   
     end
