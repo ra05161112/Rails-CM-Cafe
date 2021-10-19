@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_19_083326) do
+ActiveRecord::Schema.define(version: 2021_10_19_101116) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 2021_10_19_083326) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "picture"
     t.integer "voted_count", default: 0
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "amount"
+    t.integer "item_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_orders_on_item_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,6 +61,8 @@ ActiveRecord::Schema.define(version: 2021_10_19_083326) do
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
+  add_foreign_key "orders", "items"
+  add_foreign_key "orders", "users"
   add_foreign_key "votes", "items"
   add_foreign_key "votes", "users"
 end

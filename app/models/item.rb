@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   validate  :picture_size
 
   has_many :votes , dependent: :destroy
-
+  has_many :orders, dependent: :destroy
 
   private
     # アップロードされた画像のサイズをバリデーションする

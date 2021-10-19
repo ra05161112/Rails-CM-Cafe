@@ -1,0 +1,13 @@
+<h1>Orders#show</h1>
+<p>Find me in app/views/orders/show.html.erb</p>
+<h2>注文画面</h2>
+
+<p>アイテム情報</p>
+  <%= @item.name %>
+  <%= @item.price %>
+
+<%= form_with ([model: @item, @order],local: true url: item_order_confirm_path) do |f| %>
+  <%= f.text_field :quantity %> <br>
+  <%= f.text_field :amount %> <br>
+  <%= f.submit "送信" %> <br>
+<% end %>
