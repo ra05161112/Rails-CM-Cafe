@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
       flash[:notice] = "ok"
       redirect_to("/items/new")
     else
+      @item = Item.all
       flash[:alert] = "no"
       render("items/index")
     end
@@ -35,7 +36,7 @@ class ItemsController < ApplicationController
       flash[:notice] = "編集に成功しました🐇"
       redirect_to("/items/#{@item.id}")
     else
-      flash[:alert] = "失敗です"
+      flash[:alert] = @item.errors.full_messages
       render("items/edit")
     end
   end

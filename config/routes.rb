@@ -13,6 +13,5 @@ Rails.application.routes.draw do
   get "/users/:id", to: "users#show"
   get "/users/:id/edit", to: "users#edit"
   patch "/users/:id/edit" , to: "users#update"
-  # get "/users/:id/vote", to: "votes#new"
-  # POST "/users/:id/vote", to: "votes#create"
+  
 end
