@@ -1,9 +1,9 @@
-<%= form_with(model: @vote, url: "/votes", local: true) do |f| %>
-  <% @item.each do |item| %>
+<% @item.each do |item| %>  
+  <%= form_with(model: @vote, url: "/votes", local: true) do |f| %>
   <%= link_to(item.name, "/items/#{item.id}") %><%= "¥#{item.price}" %>
   <%= f.check_box :voting ,checked_value: true, unchecked_value: false %><br>
   <%= f.hidden_field :item_id, value: item.id %>
   <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "投票" %><br>
   <% end %>
-  <%= f.submit "投票" %>
 <% end %>

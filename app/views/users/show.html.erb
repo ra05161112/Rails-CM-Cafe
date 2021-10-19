@@ -3,3 +3,8 @@
   <%= @user.age %>
 <%= @user.sex %>
   <%= link_to("編集","/users/#{@user.id}/edit") %>
+<div class="favorite">
+    <% @vote.each do |vote| %>
+      <%= link_to(Item.find(vote.item_id).name, "/items/#{Item.find(vote.item_id).id}") %><br>
+    <% end %>
+</div>
