@@ -15,6 +15,10 @@ gem 'jquery-rails'
 gem 'carrierwave', '1.2.2'
 gem 'mini_magick', '4.7.0'
 gem 'devise'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap-style'
+gem 'chartkick'
+gem 'cocoon'
 
 
 # Reduces boot times through caching; required in config/boot.rb

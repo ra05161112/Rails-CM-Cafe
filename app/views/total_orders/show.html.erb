@@ -1,0 +1,8 @@
+
+<% @order.each do |order| %>
+  <%= Item.find(order.item_id).name %>
+  <%= Item.find(order.item_id).price %>
+  <%= order.quantity %>
+  <%= Item.find(order.item_id).price*order.quantity %>
+<% end %>
+<%= button_to("受け取り","/total_orders/#{@total_order.id}", method: :delete, data: { confirm: "商品の受け取りが完了しました" }) %>

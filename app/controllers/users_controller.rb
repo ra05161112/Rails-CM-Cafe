@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @vote = Vote.where(user_id: params[:id])
+    @total_order = TotalOrder.where(user_id: params[:id])
   end
 
   def edit

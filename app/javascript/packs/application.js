@@ -7,7 +7,15 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "bootstrap"
+import "../stylesheets/application"
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import "chartkick/chart.js"
+import "jquery"
+import "@nathanvda/cocoon"
+
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+// require cocoon

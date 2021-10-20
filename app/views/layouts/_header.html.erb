@@ -15,7 +15,10 @@
           <%= link_to("your page", "/users/#{current_user.id}") %>
         </li>
         <li>
-          <%= link_to("投票", "/votes/new") %>
+          <%= link_to("投票", new_vote_path) %>
+        </li>
+        <li>
+          <%= link_to("注文", new_total_order_path) %>
         </li>
         <% if current_user.admin? %>
           <li>

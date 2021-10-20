@@ -9,6 +9,11 @@
     <% @vote.each do |vote| %>
       <%= link_to(Item.find(vote.item_id).name, "/items/#{Item.find(vote.item_id).id}") %><br>
     <% end %>
+    <% if @total_order != nil %>
+      <% @total_order.each do |o| %>
+        <%= link_to("yourorder","/total_orders/#{o.id}") %>
+      <% end %>
+    <% end %>
   </div>
 
 </div>

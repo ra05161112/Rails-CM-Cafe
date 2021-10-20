@@ -10,10 +10,13 @@ Rails.application.routes.draw do
   #   resources :votes
   # end
   resources :items 
-  resources :orders
   resources :votes
+
+  resources :total_orders
+  # get "/users/:user/_id/orders/new", to: "orders#new"
   get "/users/:id", to: "users#show"
   get "/users/:id/edit", to: "users#edit"
   patch "/users/:id/edit" , to: "users#update"
+  # get "/total_orders/new", to: "total_orders#new"
   
 end
