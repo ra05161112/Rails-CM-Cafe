@@ -1,41 +1,44 @@
 <header>
-  <div class="header-logo">
-    CM-Cafe
-  </div>
-  <div>
+<nav class="navbar navbar-expand-lg navbar-light bg-ligth">
+  <a class="navbar-brand" href="/">CM_cafe</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
     <% if current_user != nil %>
-      <ul>
-        <li>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
           <%= button_to("ログアウト", "/users/sign_out", method: :delete, class:"btn btn-sm btn-outline-dark") %>
         </li>
-        <li>
-          <%= link_to("商品一覧", "/items") %>  
+        <li class="nav-item">
+          <%= link_to("商品一覧", "/items",class:"nav-link active") %>  
         </li>
-        <li>
-          <%= link_to("your page", "/users/#{current_user.id}") %>
+        <li class="nav-item">
+          <%= link_to("your page", "/users/#{current_user.id}",class:"nav-link active") %>
         </li>
-        <li>
-          <%= link_to("投票", new_vote_path) %>
+        <li class="nav-item">
+          <%= link_to("投票", new_vote_path,class:"nav-link active") %>
         </li>
-        <li>
-          <%= link_to("注文", new_total_order_path) %>
+        <li class="nav-item">
+          <%= link_to("注文", new_total_order_path,class:"nav-link active") %>
         </li>
         <% if current_user.admin? %>
-          <li>
-            <%= link_to("商品追加", "/items/new") %>
+          <li class="nav-item">
+            <%= link_to("商品追加", "/items/new",class:"nav-link active") %>
           </li>
         <% end %>
-      </ul>
     <% else %>
-      <ul>
-        <li>
-          <%= link_to("ログイン", "/users/sign_in") %>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"> 
+          <%= link_to("ログイン", "/users/sign_in",class:"nav-link active") %>
         </li>
-        <li>
-          <%= link_to("新規登録", "/users/sign_up") %>
+        <li class="nav-item">
+          <%= link_to("新規登録", "/users/sign_up",class:"nav-link active") %>
         </li>
-        <li>
-          <%= link_to("商品一覧", "/items") %>  
+        <li class="nav-item">
+          <%= link_to("商品一覧", "/items",class:"nav-link active") %>  
         </li>
+      </ul>
     <% end %>
- </header>
+    </div>
+</nav>

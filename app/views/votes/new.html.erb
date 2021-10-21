@@ -1,20 +1,22 @@
+<div class="container">
 <div class="favorite">
   <% @vote.each do |voted_item| %>
+    <i class="bi bi-star"></i>
     <%= link_to(Item.find(voted_item.item_id).name, "/items/#{Item.find(voted_item.item_id).id}") %> 
-    <%= button_to("投票を取り消す", "/votes/#{voted_item.id}", method: :delete, class:"btn btn-sm btn-outline-danger") %><br>
+    <%= link_to("お気に入りを取り消す", "/votes/#{voted_item.id}", method: :delete, class:"btn btn-sm btn-outline-danger") %><br>
   <% end %> 
 </div>
 
 
-<div class="not_favorit">
+<div class="not_favorite">
   <p>追加</p>
   <% @item.each do |item| %>  
     <%= form_with(model: @vote, url: "/votes", local: true) do |f| %>
-    <%= link_to(item.name, "/items/#{item.id}") %><%= "¥#{item.price}" %>
-    <%= f.check_box :voting ,checked_value: true, unchecked_value: false %><br>
+    <%= link_to(item.name, "/items/#{item.id}", class:"text-decoration-none link-secondary") %><%= " ¥#{item.price}" %>
     <%= f.hidden_field :item_id, value: item.id %>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.submit "投票" %><br>
+    <%= f.submit "お気に入りに追加する" , class:"btn btn-sm btn-outline-success" %><br>
     <% end %>
   <% end %>
+</div>
 </div>

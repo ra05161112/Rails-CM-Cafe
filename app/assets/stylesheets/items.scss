@@ -2,10 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 img {
+  width: 7%;
+  height: 7%;
+}
+
+.col{
   width: 40%;
   height: 50%;
 }
 
-a.favrite {
+a.favorite {
   color: crimson;
+}
+
+.picture  img {
+  width: 50%;
+  height: 50%; 
+}
+
+
+.red{
+  color: red;
 }
