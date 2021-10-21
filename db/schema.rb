@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_20_083457) do
+ActiveRecord::Schema.define(version: 2021_10_21_092235) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_10_20_083457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "total_order_id"
+    t.time "creation_time"
     t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["total_order_id"], name: "index_orders_on_total_order_id"
   end

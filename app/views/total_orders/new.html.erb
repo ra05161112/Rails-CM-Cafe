@@ -13,4 +13,34 @@
   <%= f.submit "登録" %>
 <% end %>
 
+<!--<script type="text/javascript">
+  $(document).ready(function(){
+    last();
+    addEvent($("#details"));
+    
+    $("#details")
+    .on("cocoon:after-insert", function(e, insertedItem) {
+      addEvent(insertedItem);
+    })
+    .on("cocoon:after-remove", function() {
+      last();
+    });
 
+    function addEvent(obj) {
+      $(obj).find("input").change(function(){
+        last();
+      });
+    };
+    function last() {
+      let last = 0.0;
+      $("#details .row").each(function(index, row){
+        const create_time = $(row).find("input[id$='']").val();
+        const quantity = $(row).find("input[id$='quantity']").val();
+        if (price && quantity) {
+          total += price * quantity;
+        }
+      });
+      $("#receipt_total_price").val(total);
+    }
+  });
+</script>-->
