@@ -11,7 +11,6 @@ gem 'sass-rails',  '>= 6'
 gem 'turbolinks',  '~> 5'
 gem 'jbuilder',    '~> 2.7'
 gem 'bootstrap',   '~> 4.1.1'
-gem 'jquery-rails'
 gem 'carrierwave', '1.2.2'
 gem 'mini_magick', '4.7.0'
 gem 'devise'
@@ -19,6 +18,7 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap-style'
 gem 'chartkick'
 gem 'cocoon'
+gem 'faker'
 
 
 # Reduces boot times through caching; required in config/boot.rb

@@ -1,7 +1,7 @@
-<div class="favorit">
+<div class="favorite">
   <% @vote.each do |voted_item| %>
     <%= link_to(Item.find(voted_item.item_id).name, "/items/#{Item.find(voted_item.item_id).id}") %> 
-    <%= link_to("投票を取り消す", "/votes/#{voted_item.id}", method: :delete) %><br>
+    <%= button_to("投票を取り消す", "/votes/#{voted_item.id}", method: :delete, class:"btn btn-sm btn-outline-danger") %><br>
   <% end %> 
 </div>
 

@@ -1,8 +1,10 @@
+<div class="nested-fields row">
   <%= f.hidden_field :id %>
   <%= f.label :item_id %>
   <%= f.select :item_id, options_from_collection_for_select(@item, "id", "name") %>
   <%= f.label :quantity %>
   <%= f.number_field :quantity %>
-<div class="col">
-  <%= link_to_remove_association "<i class='bi bi-x'></i> 削除".html_safe, f  %>
+  <div class="col">
+    <%= link_to_remove_association "<i class='bi bi-x'></i> 削除".html_safe, f  %>
+  </div>
 </div>

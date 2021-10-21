@@ -11,7 +11,7 @@
 <div class="float-right">
 <% if current_user.admin? %>  
   <%= link_to("編集","/items/#{@item.id}/edit") %>
-  <%= link_to("削除", "/items/#{@item.id}", method: :delete, data: { confirm: "本当に削除しますか？" }) %>
+  <%= button_to("削除", "/items/#{@item.id}", method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-sm btn-outline-danger") %>
 <% end %>
 </div>
 

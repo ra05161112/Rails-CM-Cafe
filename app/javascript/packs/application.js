@@ -18,4 +18,3 @@ import "@nathanvda/cocoon"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-// require cocoon

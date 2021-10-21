@@ -1,8 +1,16 @@
 <%= form_with(model: @total_order, url: "/total_orders", local: true) do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.fields_for :orders do |of| %>
-    <%= render "order_field", f: of %>
-  <% end %>
-  
+  <%= f.label :orders %>
+  <div id="details">
+    <%= f.fields_for :orders do |o| %>
+      <%= render "order_fields", f: o %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to_add_association " 追加", f, :orders, class: "btn btn-sm btn-secondary",
+      data: { association_insertion_node: '#details', association_insertion_method: 'append' } %>
+  </div>
   <%= f.submit "登録" %>
 <% end %>
+
+

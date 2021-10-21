@@ -6,7 +6,7 @@
     <% if current_user != nil %>
       <ul>
         <li>
-          <%= link_to("ログアウト", "/users/sign_out", method: :delete) %>
+          <%= button_to("ログアウト", "/users/sign_out", method: :delete, class:"btn btn-sm btn-outline-dark") %>
         </li>
         <li>
           <%= link_to("商品一覧", "/items") %>  

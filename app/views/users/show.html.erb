@@ -11,7 +11,7 @@
     <% end %>
     <% if @total_order != nil %>
       <% @total_order.each do |o| %>
-        <%= link_to("yourorder","/total_orders/#{o.id}") %>
+        <%= link_to("yourorder#{o.id}","/total_orders/#{o.id}") %>
       <% end %>
     <% end %>
   </div>
