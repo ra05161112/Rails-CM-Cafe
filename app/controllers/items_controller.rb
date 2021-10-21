@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
   before_action :admin_user, only: [:new, :create, :destroy, :edit, :update]
 
   def index
-    @item = Item.all
+    @item = Item.paginate(page: params[:page], per_page:10)
+    @user_count = User.count
   end
 
   def new
