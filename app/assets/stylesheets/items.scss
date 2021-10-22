@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 img {
-  width: 7%;
-  height: 7%;
+  width: 100px;
+  height: 100px;
 }
 
 .col{
@@ -23,4 +23,8 @@ a.favorite {
 
 .red{
   color: red;
+}
+
+.float-right {
+  margin-bottom: 5%;
 }

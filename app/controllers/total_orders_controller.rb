@@ -34,7 +34,7 @@ class TotalOrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:total_order).permit(:total_price, :last_create_time, :user_id, orders_attributes: [:id, :item_id, :quantity, :_destroy])
+    params.require(:total_order).permit(:total_price,:large_time, :last_create_time, :user_id, orders_attributes: [:id, :item_id, :quantity, :_destroy])
   end
 
 end

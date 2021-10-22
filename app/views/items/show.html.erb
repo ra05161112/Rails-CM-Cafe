@@ -9,6 +9,7 @@
 </div>
 
 <div class="float-right">
+  <%= link_to("戻る", :back, class:"btn btn-sm btn-outline-primary") %>
 <% if current_user.admin? %>  
   <%= link_to("編集","/items/#{@item.id}/edit", class:"btn btn-sm btn-outline-primary") %>
   <%= link_to("削除", "/items/#{@item.id}", method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-sm btn-outline-danger") %>

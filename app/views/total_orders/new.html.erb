@@ -1,5 +1,7 @@
 <%= form_with(model: @total_order, url: "/total_orders", local: true) do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.label :large_time %>
+  <%= f.number_field :large_time, step: "0.1"   %>
   <%= f.label :orders %>
   <div id="details">
     <%= f.fields_for :orders do |o| %>
