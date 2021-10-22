@@ -1,22 +1,30 @@
-<div class="container">
-<div class="favorite">
-  <% @vote.each do |voted_item| %>
-    <i class="bi bi-star"></i>
-    <%= link_to(Item.find(voted_item.item_id).name, "/items/#{Item.find(voted_item.item_id).id}") %> 
-    <%= link_to("お気に入りを取り消す", "/votes/#{voted_item.id}", method: :delete, class:"btn btn-sm btn-outline-danger") %><br>
-  <% end %> 
-</div>
+<p>お気に入り商品</p>
+<% @vote.each do |voted_item| %>
+  <div class="favorite row  my-3">
+    <div class="col-1"><i class="bi bi-star"></i></div>
+    <div class="col-8">
+      <%= link_to(Item.find(voted_item.item_id).name, "/items/#{Item.find(voted_item.item_id).id}") %> 
+    </div>
+    <div class="col-3">
+      <%= link_to("取り消す", "/votes/#{voted_item.id}", method: :delete, class:"btn btn-sm btn-outline-danger") %> 
+    </div>
+  </div>
+<% end %> 
 
-
-<div class="not_favorite">
-  <p>追加</p>
-  <% @item.each do |item| %>  
+  <p>その他の商品</p>
+  <% @item.each do |item| %>
     <%= form_with(model: @vote, url: "/votes", local: true) do |f| %>
-    <%= link_to(item.name, "/items/#{item.id}", class:"text-decoration-none link-secondary") %><%= " ¥#{item.price}" %>
-    <%= f.hidden_field :item_id, value: item.id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.submit "お気に入りに追加する" , class:"btn btn-sm btn-outline-success" %><br>
+      <div class="not_favorite row my-3">
+        <div class="col-1"></div>
+        <div class="col-8">
+          <%= link_to(item.name, "/items/#{item.id}", class:"text-decoration-none link-secondary") %>
+        </div>
+        <%= f.hidden_field :item_id, value: item.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <div class="col-3">
+          <%= f.submit "追加" , class:"btn btn-sm btn-outline-success" %>
+        </div>
+      </div>
     <% end %>
   <% end %>
-</div>
-</div>
+

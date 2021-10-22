@@ -8,5 +8,3 @@
 <% if @total_order.large_time != nil && @total_order.created_at + (@total_order.large_time * 60).second  < DateTime.now  %>
   <%= link_to("受け取り","/total_orders/#{@total_order.id}", method: :delete, data: { confirm: "商品の受け取りが完了しました" }) %>
 <% end %>
-<%= link_to("受け取り","/total_orders/#{@total_order.id}", method: :delete, data: { confirm: "商品の受け取りが完了しました" }, class:"btn btn-dark
-") %>

@@ -1,4 +1,5 @@
 <%= form_with(model: @total_order, url: "/total_orders", local: true) do |f| %>
+  <%= render "shared/error_messages", model: f.object %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.label :large_time %>
   <%= f.number_field :large_time, step: "0.1"   %>
