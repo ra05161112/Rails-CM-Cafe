@@ -13,7 +13,7 @@
           <td class="col-7">
             <% if item.voted_count > @user_count/2 %>
               <i class="bi bi-star text-danger"></i>
-              <%= link_to(item.name, "/items/#{item.id}",class:"item favorite")  %>
+              <%= link_to(item.name, "/items/#{item.id}",class:"text-danger")  %>
             <% else %>
               <%= link_to(item.name, "/items/#{item.id}",class:"item")  %>
             <% end %>

@@ -13,11 +13,8 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      flash[:notice] = "ok"
       redirect_to("/items")
     else
-      @item = Item.all
-      flash[:alert] = "no"
       render("items/new")
     end
   end
@@ -35,10 +32,8 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      flash[:notice] = "編集に成功しました🐇"
       redirect_to("/items/#{@item.id}")
     else
-      flash[:alert] = @item.errors.full_messages
       render("items/edit")
     end
   end
