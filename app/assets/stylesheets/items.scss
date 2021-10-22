@@ -11,9 +11,6 @@ img {
   height: 50%;
 }
 
-a.favorite {
-  color: crimson;
-}
 
 .picture  img {
   width: 50%;
@@ -27,4 +24,8 @@ a.favorite {
 
 .float-right {
   margin-bottom: 5%;
+}
+
+.item :hover {
+  color: black;
 }

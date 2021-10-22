@@ -4,18 +4,18 @@
     <p class="text-right text-danger"> <i class="bi bi-star"></i>人気商品</p>
     <th>商品名</th>
     <th>価格</th>
-    <th>picture</th>
+    <th>image</th>
   </thead>
   <tbody>
     <% @item.each do |item| %>
       <tr>
         <div class="favorite">
           <td class="col-7">
-            <i class="bi bi-star"></i>
             <% if item.voted_count > @user_count/2 %>
-              <%= link_to(item.name, "/items/#{item.id}",class:"favorite")  %>
+              <i class="bi bi-star text-danger"></i>
+              <%= link_to(item.name, "/items/#{item.id}",class:"item favorite")  %>
             <% else %>
-              <%= link_to(item.name, "/items/#{item.id}")  %>
+              <%= link_to(item.name, "/items/#{item.id}",class:"item")  %>
             <% end %>
           </td>
           <td class="col-1" >
