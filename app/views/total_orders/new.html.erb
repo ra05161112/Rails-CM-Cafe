@@ -1,18 +1,25 @@
 <%= form_with(model: @total_order, url: "/total_orders", local: true) do |f| %>
   <%= render "shared/error_messages", model: f.object %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.label :large_time %>
-  <%= f.number_field :large_time, step: "0.1"   %>
-  <%= f.label :orders %>
-  <div id="details">
-    <%= f.fields_for :orders do |o| %>
-      <%= render "order_fields", f: o %>
-    <% end %>
-  </div>
-  <div>
-    <%= link_to_add_association " 追加", f, :orders, class: "btn btn-sm btn-secondary",
-      data: { association_insertion_node: '#details', association_insertion_method: 'append' } %>
-  </div>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="col-2 sm-1">
+      <%= f.label :large_time %>
+      <%= f.number_field :large_time, step: "0.1"   %>
+    </div>  
+    <div class="row border">
+      <div class="col-10">
+        <%= f.label :orders %>
+        <div id="details">
+          <%= f.fields_for :orders do |o| %>
+            <%= render "order_fields", f: o %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <%= link_to_add_association " 追加", f, :orders, class: "btn btn-sm btn-secondary",
+        data: { association_insertion_node: '#details', association_insertion_method: 'append' } %>
+    </div>
+      
   <%= f.submit "登録" %>
 <% end %>
 

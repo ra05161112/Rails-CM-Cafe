@@ -4,7 +4,7 @@ class TotalOrdersController < ApplicationController
   def new
     @total_order = TotalOrder.new
     @total_order.orders.build
-    @item = Item.all
+    # @item = Item.all
   end
 
   def create
