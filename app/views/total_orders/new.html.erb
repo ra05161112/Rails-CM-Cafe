@@ -44,13 +44,12 @@
     function last() {
       let last = 0.0;
       $("#details .row").each(function(index, row){
-        const create_time = $(row).find("input[id$='']").val();
-        const quantity = $(row).find("input[id$='quantity']").val();
-        if (price && quantity) {
-          total += price * quantity;
+        const create_time = $(row).find("input[id$='creation_time']").val();
+        if (create_time && last < creation_time) {
+          last = creation_time;
         }
       });
-      $("#receipt_total_price").val(total);
+      $("#total_order_large_time").val(last);
     }
   });
 </script>-->

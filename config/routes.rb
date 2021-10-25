@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   resources :items 
   resources :votes
 
-  resources :total_orders
+  resources :total_orders, :only => [:create, :show, :destroy]
+  get "/total_orders/:item_id/new", to: "total_orders#new"
   # get "/users/:user/_id/orders/new", to: "orders#new"
   get "/users/:id", to: "users#show"
   get "/users/:id/edit", to: "users#edit"

@@ -37,4 +37,8 @@ class TotalOrdersController < ApplicationController
     params.require(:total_order).permit(:total_price,:large_time, :last_create_time, :user_id, orders_attributes: [:id, :item_id, :quantity, :_destroy])
   end
 
+  def get_creation_tiome
+    @find_creation_time = Item.all.to_json(only: [:id, :creation_time])
+  end
+
 end

@@ -20,7 +20,7 @@
           <%= link_to("投票", new_vote_path,class:"nav-link active") %>
         </li>
         <li class="nav-item">
-          <%= link_to("注文", new_total_order_path,class:"nav-link active") %>
+          <%= link_to("注文", "/total_orders/#{Item.first.id}/new",class:"nav-link active") %>
         </li>
         <% if current_user.admin? %>
           <li class="nav-item">
