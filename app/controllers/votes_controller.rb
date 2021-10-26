@@ -13,13 +13,13 @@ class VotesController < ApplicationController
       @item = Item.find(@vote.item_id) 
       @item.voted_count += 1
       @item.save
-      flash[:notice] = "投票が成功しました🐇"
-      redirect_to("/votes/new")
+      redirect_back(fallback_location: root_path)
     else
       # @item = Item.find(params[:item_id])
       @item = Item.all
-      flash[:alert] = @vote.errors.full_messages
       # render "items/show"
+      @vote = Vote.where(user_id: current_user.id)
+      @item = Item.where.not( id: voted_item(current_user.id) )
       render "votes/new"
     end
   end
@@ -36,8 +36,7 @@ class VotesController < ApplicationController
       @item = Item.find(@vote.item_id)
       @item.voted_count -= 1
       @item.save
-      flash[:notice] = "メニューの削除に成功しました🐇"
-      redirect_to("/votes/new")   
+      redirect_back(fallback_location: root_path)  
     end
     
   end
@@ -45,7 +44,7 @@ class VotesController < ApplicationController
 
   private
     def vote_params
-      params.require(:vote).permit(:voting, :user_id, :item_id)
+      params.permit(:item_id, :user_id)
     end
 
     def voted_item(user_id)

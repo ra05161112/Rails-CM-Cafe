@@ -10,6 +10,15 @@
 
 <div class="float-right">
   <%= link_to("戻る", :back, class:"btn btn-sm btn-outline-primary") %>
+  <% if @vote == nil %>
+    <%= form_with(model: @vote, url: "/votes", local: true) do |f| %>
+      <%= f.hidden_field :item_id, value: @item.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit "お気に入りに追加する" , class:"btn btn-sm btn-outline-primary" %>
+    <% end %>
+  <% else %>
+    <%= link_to("お気に入りから削除する","/votes/#{@vote.id}", method: :delete, class:"btn btn-sm btn-outline-danger") %>
+  <% end %>
   <%= link_to("この商品を注文する", "/total_orders/#{@item.id}/new", class:"btn btn-sm btn-outline-primary") %>
 <% if current_user.admin? %>  
   <%= link_to("編集","/items/#{@item.id}/edit", class:"btn btn-sm btn-outline-primary") %>
