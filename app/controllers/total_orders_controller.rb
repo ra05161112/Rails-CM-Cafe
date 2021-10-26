@@ -4,7 +4,11 @@ class TotalOrdersController < ApplicationController
   def new
     @total_order = TotalOrder.new
     @total_order.orders.build
-    # @item = Item.all
+    @item = Item.all
+    @time = []
+    @item.each do |item|
+      @time.push(item.creation_time)
+    end
   end
 
   def create

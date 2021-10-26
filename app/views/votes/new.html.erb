@@ -13,7 +13,7 @@
 
   <p>その他の商品</p>
   <% @item.each do |item| %>
-    <%= form_with(model: @vote, url: "/votes", local: true) do |f| %>
+    <%= form_with(model: Vote.new, url: "/votes", local: true) do |f| %>
       <div class="not_favorite row my-3">
         <div class="col-1"></div>
         <div class="col-8">

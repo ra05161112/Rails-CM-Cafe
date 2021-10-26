@@ -12,23 +12,25 @@
   </div>
   <div class="col">
     <%= f.label :creation_time  %>
-    <%= f.number_field :creation_time %>
+    <%= f.number_field :creation_time,value:Item.find(params[:item_id]).creation_time, step: 0.1 %>
   </div>
   <div class="col">
     <%= link_to_remove_association "<i class='bi bi-x'></i> 削除".html_safe, f  %>
   </div>
 </div>
+    <div id="hidden" hidden>
+      <%= @time %>
+    </div>
 
-<!--<script type="text/javascript">
+<script type="text/javascript">
   $('select').change(add_time);
-  function add_time(){
-    // const id = document.getElementById("total_order_orders_attributes_0_item_id").innerHTML;
+    function add_time(){
     const id = document.getElementById('total_order_orders_attributes_0_item_id').value;
-    // alert(id);
-    var result = Item.find(id).creation_time
-    alert(result);
-    // $("#order_creation_time").val(data.creation_time);
+    const time = document.getElementById('hidden').innerHTML
+    var result = (time[id * 5 -2] + time[id*5])/10
+    $("#total_order_orders_attributes_0_creation_time").val(result);
+    $("#total_order_large_time").val(result);
 
   }
 
-</script>-->
+</script>

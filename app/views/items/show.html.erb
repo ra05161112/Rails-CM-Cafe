@@ -11,7 +11,7 @@
 <div class="float-right">
   <%= link_to("戻る", :back, class:"btn btn-sm btn-outline-primary") %>
   <% if @vote == nil %>
-    <%= form_with(model: @vote, url: "/votes", local: true) do |f| %>
+    <%= form_with(model: Vote.new, url: "/votes", local: true) do |f| %>
       <%= f.hidden_field :item_id, value: @item.id %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.submit "お気に入りに追加する" , class:"btn btn-sm btn-outline-primary" %>
