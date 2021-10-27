@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   get "/users/:id/edit", to: "users#edit"
   patch "/users/:id/edit" , to: "users#update"
   # get "/total_orders/new", to: "total_orders#new"
-  
+  get "/recommend", to: "items#recommend"  
+  get "/new_item", to:"items#new_item"
 end

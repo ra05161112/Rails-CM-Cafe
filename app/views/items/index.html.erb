@@ -2,15 +2,17 @@
 <table class="table">
   <thead>
     <p class="text-right text-danger"> <i class="bi bi-star"></i>人気商品</p>
-    <th>商品名</th>
-    <th>価格</th>
+    <%= sortable "created_at", "商品登録順" %><br>
+    <%= sortable "voted_count","人気順" %>
+    <th><%= sortable "name","商品名" %></th><!--shouhinmei-->
+    <th><%= sortable "price", "価格" %></th>
     <th>image</th>
   </thead>
   <tbody>
     <% @item.each do |item| %>
       <tr>
         <div class="favorite">
-          <td class="col-7">
+          <td class="col-6">
             <% if item.voted_count > @user.recom_count %>
               <i class="bi bi-star text-danger"></i>
               <%= link_to(item.name, "/items/#{item.id}",class:"text-danger")  %>
@@ -19,7 +21,7 @@
             <% end %>
           </td>
           <td class="col-1" >
-            <%= "¥#{item.price}" %>
+            <%= "#{item.price}円" %>
           </td>
           <td class="col-3" >
             <%= image_tag item.picture.url  %>

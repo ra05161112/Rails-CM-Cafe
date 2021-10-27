@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
   before_action :admin_user, only: [:new, :create, :destroy, :edit, :update]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @item = Item.paginate(page: params[:page], per_page:10)
+    @item = Item.all.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page:10)
     @user_count = User.count
     @user = User.first
   end
@@ -43,14 +44,28 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    flash[:notice] = "メニューの削除に成功しました🐇"
     redirect_to("/items")
+  end
+
+  def recommend
+    if current_user.sex == :男性
+      @user = User.where(sex: :男性)
+      @vote = sex_votes(:男性)
+      @item = Item.where(id: @user.id)
+      @users = user_count(:男性).count
+    elsif current_user.sex == :女性
+      @user = User.where(sex: :女性)
+      @item = Item.where(id: @user.id)
+      @users = user_count(:女性)
+    end
+
+    
   end
 
 
   private
     def item_params
-      params.require(:item).permit(:name, :description, :price, :creation_time, :picture)
+      params.require(:item).permit(:name, :description, :price, :creation_time, :picture, :voted_count)
     end
 
     def admin_user
@@ -58,6 +73,32 @@ class ItemsController < ApplicationController
         flash[:alert] = "そのページは開けません"
         redirect_to ("/items")
       end
+    end
+
+    def user_count(sex)
+      users = []
+      user = User.where(sex: sex)
+      user.each do |u|
+        users.push(u)
+      end
+      return users
+    end
+
+    def sex_votes(sex)
+      user = User.where(sex: sex)
+      votes = []
+      user.each do |u|
+        votes.push(Vote.where(user_id: :u.id))
+      end
+      return votes
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+    end
+  
+    def sort_column
+        Item.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
 
 end

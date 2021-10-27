@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :correct_user, only: [:destroy, :edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -27,5 +28,10 @@ class UsersController < ApplicationController
     # def update_resource(resource, params)
     #   resource.update_without_password(params)
     # end
+
+    def correct_user
+      redirect_to root_path unless current_user.id == params[:id]
+      flash[:alert] = "他人の情報は編集できません"
+    end
 
 end

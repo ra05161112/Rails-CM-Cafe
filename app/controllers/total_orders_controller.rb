@@ -14,7 +14,6 @@ class TotalOrdersController < ApplicationController
   def create
     @total_order = TotalOrder.new(order_params)
     if @total_order.save
-      flash[:notice] = "注文を受け付けました"
       redirect_to("/total_orders/#{@total_order.id}")
     else
       render "total_orders/new"
