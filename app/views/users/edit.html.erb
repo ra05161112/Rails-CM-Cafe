@@ -24,6 +24,13 @@
     <%= f.label :admin %>
     <%= f.check_box :admin %>
   </div>
+  <% if current_user.admin? %>
+    <div class="field">
+      <%= f.label :recom_count %><br>
+      <%= f.number_field :recom_count %><br>
+      <%= "参考:登録者数#{User.count}人" %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "Update" %>

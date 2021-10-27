@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   def index
     @item = Item.paginate(page: params[:page], per_page:10)
     @user_count = User.count
+    @user = User.first
   end
 
   def new

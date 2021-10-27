@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   private 
     def user_params
-      params.require(:user).permit(:email, :name, :age, :sex, :admin)
+      params.require(:user).permit(:email, :name, :age, :sex, :admin, :recom_count)
     end
     #  #必須  更新（編集の反映）時にパスワード入力を省く
     # def update_resource(resource, params)
