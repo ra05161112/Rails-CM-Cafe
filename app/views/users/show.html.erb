@@ -19,7 +19,7 @@
     <% if @total_order != nil %>
       <p>注文履歴</p>
       <% @total_order.each do |o| %>
-        <%= link_to("yourorder#{o.id}","/total_orders/#{o.id}", class: "link-uccess text-decoration-none") %>
+        <%= link_to("注文番号#{o.id}番 ","/total_orders/#{o.id}", class: "link-uccess text-decoration-none") %><br>
       <% end %>
     <% end %>
   </div>

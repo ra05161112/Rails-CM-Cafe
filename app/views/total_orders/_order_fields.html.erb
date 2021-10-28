@@ -1,17 +1,17 @@
 <div class="nested-fields row">
   <%= f.hidden_field :id %>
   <div class="col" id="item_id" >
-    <%= f.label :item_id %>
+    <%= f.label :item_id, "商品" %>
     <div id="item_id">
       <%= f.select :item_id, options_from_collection_for_select(Item.all, :id, :name, :selected => params[:item_id]) %>
     </div>
   </div>
   <div class="col">
-    <%= f.label :quantity %>
+    <%= f.label :quantity, "数量" %>
     <%= f.number_field :quantity, value: 1 %>
   </div>
   <div class="col">
-    <%= f.label :creation_time  %>
+    <%= f.label :creation_time,"製作時間(分)"  %>
     <%= f.number_field :creation_time,value:Item.find(params[:item_id]).creation_time, step: 0.1 %>
   </div>
   <div class="col">

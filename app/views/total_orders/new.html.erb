@@ -2,12 +2,12 @@
   <%= render "shared/error_messages", model: f.object %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <div class="col-2 sm-1">
-      <%= f.label :large_time %>
+      <%= f.label :large_time, "最大製作時間(分)" %>
       <%= f.number_field :large_time, step: "0.1" ,value:Item.find(params[:item_id]).creation_time  %>
     </div>  
     <div class="row border">
       <div class="col-10">
-        <%= f.label :orders %>
+        <%= f.label :orders, "注文詳細" %>
         <div id="details">
           <%= f.fields_for :orders do |o| %>
             <%= render "order_fields", f: o %>
@@ -23,37 +23,4 @@
   <%= f.submit "登録" %>
 <% end %>
 
-<script type="text/javascript">
 
-  $(document).ready(function(){
-    // last();
-    // addEvent($("#details"));
-    
-    $("#details")
-    .on("cocoon:after-insert", function(e, insertedItem) {
-      // addEvent(insertedItem);
-      addEvent(add_time);
-    })
-    // .on("cocoon:after-remove", function() {
-    //   last();
-    // });
-
-  
-
-  //   function addEvent(obj) {
-  //     $(obj).find("input").change(function(){
-  //       last();
-  //     });
-  //   };
-  //   function last() {
-  //     let last = 0.0;
-  //     $("#details .row").each(function(index, row){
-  //       const create_time = $(row).find("input[id$='creation_time']").val();
-  //       if (create_time && last < creation_time) {
-  //         last = creation_time;
-  //       }
-  //     });
-  //     $("#total_order_large_time").val(last);
-  //   }
-  // });
-</script>
