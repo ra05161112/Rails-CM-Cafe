@@ -1,10 +1,29 @@
+<table class="table">
+  <p><%= notice %></p>
+  <thead>
+    <td>商品名</td>
+    <td>注文数</td>
+    <td>単価</td>
+    <td>小計</td>
+  </thead>
+  <tbody>
+    <% @order.each do |order| %>
+      <tr>
+        <td class="col-8"><%= Item.find(order.item_id).name %></td>
+        <td class="col-1"><%= "#{order.quantity}点" %></td>
+        <td class="col-1"><%= "#{Item.find(order.item_id).price}円" %></td>
+        <td class="col-2"><%= "#{Item.find(order.item_id).price*order.quantity}円" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="row">
+<div class="col-10"></div>
+<div class="col-2">
+  <%= "合計 #{@total_price}円" %>
+</div>
+</div>
 
-<% @order.each do |order| %>
-  <%= Item.find(order.item_id).name %>
-  <%= Item.find(order.item_id).price %>
-  <%= order.quantity %>
-  <%= "¥#{Item.find(order.item_id).price*order.quantity}" %><br>
-<% end %>
 <% if @total_order.large_time != nil && @total_order.created_at + (@total_order.large_time * 60).second  < DateTime.now  %>
   <%= link_to("受け取り","/total_orders/#{@total_order.id}", method: :delete, data: { confirm: "商品の受け取りが完了しました" }) %>
 <% elsif @total_order.large_time.nil?  %>
