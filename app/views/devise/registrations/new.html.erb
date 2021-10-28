@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= f.label :sex %><br>
-    <%= f.select :sex,  [["選択しない", 0], ["男性",1], ["女性", 2]], { include_blank: true, selected: 0 } %>
+    <%= f.select :sex, User.sexes.keys %>
   </div>
 
   <div class="field">

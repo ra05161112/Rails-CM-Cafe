@@ -30,8 +30,9 @@ class UsersController < ApplicationController
     # end
 
     def correct_user
-      redirect_to root_path unless current_user.id == params[:id]
-      flash[:alert] = "他人の情報は編集できません"
+      @user = User.find(params[:id])
+      redirect_to root_path unless current_user == @user
+      flash.now[:alert] = "他人の情報は編集できません"
     end
 
 end
