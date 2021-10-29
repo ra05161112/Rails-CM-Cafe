@@ -2,9 +2,9 @@
 <div class="text-center">
 <table class="table">
   <thead>
-    <p class="text-right text-danger"> <i class="bi bi-star"></i>人気商品</p>
     <%= sortable "created_at", "商品登録順" %><br>
     <%= sortable "voted_count","人気順" %>
+    <p class="text-right text-danger"> <i class="bi bi-star"></i>人気商品</p>
     <th><%= sortable "name","商品名" %></th><!--shouhinmei-->
     <th>価格</th>
     <th>image</th>
